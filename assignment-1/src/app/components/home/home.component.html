@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg" style="background-color:blue;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#" style="color:white;">Neosoft Technologies</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-left:290px;">
+        <li class="nav-item">
+          <button class="btn btn-light" routerLink="/">Home</button>
+        </li>
+        <li class="nav-item" style="margin-left:20px;">
+          <button class="btn btn-light" routerLink="/add">Add Product</button>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search"
+          [(ngModel)]="search">
+      </form>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let pro of proData | search:search"><br><br>
+      <div class="card text-center" style="width:18rem;  border-style:solid;
+             border-width:medium; border-color:black;">
+        <img src="{{pro.img}}" class="card-img-top" style="height:200px;">
+        <div class="card-body">
+          <h3 class="card-title">{{pro.name}}</h3>
+          <h6 class="card-text">{{pro.price}}</h6>
+          <br>
+          <div class="btn-group">
+            <a class="btn btn-primary" [routerLink]="['/view',pro._id]">View</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="btn btn-success" [routerLink]="['/edit',pro._id]">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="btn btn-danger" (click)="delPro(pro._id)">Delete</a>
+            <br>
+          </div>
+          <br>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+<app-nav></app-nav>
+<div class="container"><br>
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+<h3 class="text-center"> Add Product</h3>
+<form [formGroup]="myForm" (ngSubmit)="postdata()">
+  <div class="form-group mb-2">
+      <label>Name</label>
+      <input type="text" name="name" [(ngModel)]="myData.name" class="form-control" formControlName="name"/>
+      <div class="alert alert-danger" *ngIf="fdata['name'].invalid && fdata['name'].touched">
+            <div *ngIf="fdata['name'].errors && fdata['name'].errors['required']">This field is required</div>
+            <div *ngIf="fdata['name'].errors && fdata['name'].errors['pattern']">Only alphabets are allowed</div>
+      </div>
+  </div>
+  <div class="form-group mb-2">
+    <label>Price</label>
+    <input type="text" name="price" [(ngModel)]="myData.price" class="form-control" formControlName="price"/>
+    <div class="alert alert-danger" *ngIf="fdata['price'].invalid && fdata['price'].touched">
+      <div *ngIf="fdata['price'].errors && fdata['price'].errors['required']">This field is required</div>
+      <div *ngIf="fdata['price'].errors && fdata['price'].errors['pattern']">Only digits are allowed</div>
+    </div>
+  </div>
+  <div class="form-group mb-2">
+    <label>Quantity</label>
+    <input type="text" name="quantity" [(ngModel)]="myData.quantity" class="form-control" formControlName="quantity"/>
+    <div class="alert alert-danger" *ngIf="fdata['quantity'].invalid && fdata['quantity'].touched">
+      <div *ngIf="fdata['quantity'].errors && fdata['quantity'].errors['required']">This field is required</div>
+      <div *ngIf="fdata['quantity'].errors && fdata['quantity'].errors['pattern']">Only digits are allowed</div>
+    </div>
+  </div>
+  <div class="form-group mb-2">
+    <label>Category</label>
+    <input type="text" name="category" [(ngModel)]="myData.category" class="form-control" formControlName="category"/>
+    <div class="alert alert-danger" *ngIf="fdata['category'].invalid && fdata['category'].touched">
+      <div *ngIf="fdata['category'].errors && fdata['category'].errors['required']">This field is required</div>
+      <div *ngIf="fdata['category'].errors && fdata['category'].errors['pattern']">Only alphabets are allowed</div>
+    </div>
+  </div>
+  <div class="form-group mb-2">
+    <label>Description</label>
+    <input type="text" name="description" [(ngModel)]="myData.description" class="form-control" formControlName="description"/>
+    <div class="alert alert-danger" *ngIf="fdata['description'].invalid && fdata['description'].touched">
+      <div *ngIf="fdata['description'].errors && fdata['description'].errors['required']">This field is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Image</label>
+    <input type="text" name="img" [(ngModel)]="myData.img" class="form-control" formControlName="img"/>
+    <div class="alert alert-danger" *ngIf="fdata['img'].invalid && fdata['img'].touched">
+      <div *ngIf="fdata['img'].errors && fdata['img'].errors['required']">This field is required</div>
+    </div>
+  </div>
+  <div class="text-center mt-4">
+  <input type="submit" value="Add" class="btn btn-success" [disabled]="myForm.invalid"/>
+  </div>
+</form>
+<div class="col-md-3"></div>
+</div>
+</div>
+</div>
